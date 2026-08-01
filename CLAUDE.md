@@ -10,7 +10,7 @@ Because there is no toolchain, there are no build/lint/test commands to run. To 
 
 ## Branch workflow
 
-`master` is the mainline — there is no `main` branch in this repo, so read any instruction about "main" as referring to `master`. GitHub Pages deploys from it, which makes every commit that lands there a live change to the public site.
+`master` is the mainline branch. GitHub Pages deploys from it, which makes every commit that lands there a live change to the public site.
 
 Do all development on `dev`, never directly on `master`.
 
