@@ -8,6 +8,23 @@ A one-page static "coming soon" placeholder site for the custom domain in `CNAME
 
 Because there is no toolchain, there are no build/lint/test commands to run. To preview changes, open `index.html` directly in a browser, or serve the directory (`python3 -m http.server`) if you need the GTM snippet and absolute paths to behave as they do in production.
 
+## Branch workflow
+
+`master` is the mainline — there is no `main` branch in this repo, so read any instruction about "main" as referring to `master`. GitHub Pages deploys from it, which makes every commit that lands there a live change to the public site.
+
+Do all development on `dev`, never directly on `master`.
+
+Before starting work, confirm `dev` is in sync with the mainline:
+
+```
+git fetch origin master
+git log --oneline dev..origin/master
+```
+
+Empty output means `dev` is current. Any commits listed mean `dev` is behind — merge `origin/master` into `dev` and resolve before writing new code.
+
+**Ask the user before moving anything from `dev` to `master`.** Pushing to `master`, merging `dev` into it, or opening a PR that targets it all require explicit confirmation first, because they publish to the live domain. Pushing `dev` itself to `origin` does not need confirmation.
+
 ## Architecture
 
 `index.html` is deliberately self-contained: CSS lives in an inline `<style>` block, the clock illustration is inline `<svg>` markup (not an external image), and the footer year script is inline. Adding an external stylesheet, script, or image file would break that single-file property — prefer inlining.
